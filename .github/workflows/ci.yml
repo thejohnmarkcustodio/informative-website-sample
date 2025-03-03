@@ -63,7 +63,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker build -t thejohnmarkcustodio/informative-website:latest build/web
+          docker build -t thejohnmarkcustodio/informative-website:latest -f Dockerfile .
           docker push thejohnmarkcustodio/informative-website:latest
 
       - name: Update Helm Chart Repository
