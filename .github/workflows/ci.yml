@@ -56,6 +56,9 @@ jobs:
         with:
           name: web-build
           path: .
+          
+      - name: List downloaded files
+        run: ls -al
 
       - name: Unzip production artifacts
         run: |
