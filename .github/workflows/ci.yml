@@ -32,7 +32,7 @@ jobs:
           curl -L https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.29.0-stable.tar.xz | tar -xJ -C ~/.flutter --strip-components=1
 
       - name: Add Flutter to PATH
-        run: echo "${{ github.workspace }}/.flutter/bin" >> $GITHUB_PATH
+        run: echo "${HOME}/.flutter/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: flutter pub get
