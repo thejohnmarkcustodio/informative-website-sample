@@ -55,11 +55,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: web-build
-          path: /home/runner/work/informative-website-sample/informative-website-sample
+          path: .
 
       - name: Unzip production artifacts
         run: |
-          unzip /home/runner/work/informative-website-sample/informative-website-sample/web-build.zip
+          unzip web-build.zip
 
       - name: Build and push Docker image
         env:
