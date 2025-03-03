@@ -63,7 +63,8 @@ jobs:
       - name: Move files to build/web
         run: |
           mkdir -p build/web
-          mv * build/web/
+          shopt -s extglob
+          mv !(build) build/web/
 
       - name: Copy Dockerfile
         run: cp Dockerfile .
