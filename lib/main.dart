@@ -69,7 +69,7 @@ class AboutPage extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/contact');
             },
-            child: Text('Contact', style: TextStyle(color: Colors.white)),
+            child: Text('Contact', style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0))),
           ),
         ],
       ),
@@ -91,7 +91,7 @@ class ContactPage extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/');
             },
-            child: Text('Home', style: TextStyle(color: Colors.white)),
+            child: Text('Home', style: TextStyle(color: const Color.fromARGB(255, 29, 13, 13))),
           ),
           TextButton(
             onPressed: () {
