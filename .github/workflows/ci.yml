@@ -63,7 +63,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker build -t thejohnmarkcustodio/informative-website:latest build/web
+          docker build -t thejohnmarkcustodio/informative-website:latest -f Dockerfile build/web
           docker push thejohnmarkcustodio/informative-website:latest
 
       - name: Update Helm Chart Repository
@@ -72,8 +72,8 @@ jobs:
           cd informative-website-helm
           sed -i 's|repository:.*|repository: thejohnmarkcustodio/informative-website|' informative-website/values.yaml
           sed -i 's|tag:.*|tag: latest|' informative-website/values.yaml
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "thejohnmarkcustodio@gmail.com"
+          git config --global user.name "thejohnmarkcustodio"
           git add informative-website/values.yaml
           git commit -m "Update image repository and tag"
           git push
