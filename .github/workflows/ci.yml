@@ -56,14 +56,12 @@ jobs:
         with:
           name: web-build
           path: .
-          
+
       - name: List downloaded files
-        run: ls -al
-
-      - name: Unzip production artifacts
         run: |
-          unzip web-build.zip
-
+          ls -l
+          cd ..
+          
       - name: Build and push Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
