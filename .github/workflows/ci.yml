@@ -69,11 +69,12 @@ jobs:
           shopt -s extglob
           mv !(build) build/web/
 
-      - name: Copy Dockerfile
-        run: cp Dockerfile build/web/
+      - name: Change directory to root
+        run: cd ..
 
       - name: List downloaded files
-        run: ls -al build/web/
+        run: ls -al build/web/        
+
 
       - name: Build and push Docker image
         env:
