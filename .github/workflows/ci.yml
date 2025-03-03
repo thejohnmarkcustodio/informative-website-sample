@@ -51,5 +51,5 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker build -t your-docker-repo/informative_website:latest build/web
-          docker push your-docker-repo/informative_website:latest
+          docker build -t thejohnmarkcustodio/informative-website:latest build/web
+          docker push thejohnmarkcustodio/informative-website:latest
