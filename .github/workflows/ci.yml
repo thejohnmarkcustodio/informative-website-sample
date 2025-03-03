@@ -57,11 +57,15 @@ jobs:
           name: web-build
           path: build/web
 
+      - name: Unzip production artifacts
+        run: unzip build/web/web-build.zip -d build/web
+
       - name: Build and push Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
+          pwd && ls -la
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker build -t thejohnmarkcustodio/informative-website:latest -f Dockerfile build/web
           docker push thejohnmarkcustodio/informative-website:latest
