@@ -54,6 +54,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List files after checkout
+        run: ls -al
+
       - name: Download production artifacts
         uses: actions/download-artifact@v4
         with:
@@ -67,7 +70,7 @@ jobs:
           mv !(build) build/web/
 
       - name: Copy Dockerfile
-        run: cp Dockerfile .
+        run: cp Dockerfile build/web/
 
       - name: List downloaded files
         run: ls -al build/web/
