@@ -55,17 +55,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: web-build
-          path: /home/runner/work/informative-website-sample/informative-website-sample/
+          path: /home/runner/work/informative-website-sample/informative-website-sample
 
       - name: Unzip production artifacts
         run: |
-          unzip web-build.zip
+          unzip /home/runner/work/informative-website-sample/informative-website-sample/web-build.zip
 
       - name: Build and push Docker image
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
+          pwd
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker build -t thejohnmarkcustodio/informative-website:latest -f Dockerfile .
           docker push thejohnmarkcustodio/informative-website:latest
