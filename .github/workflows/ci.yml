@@ -70,8 +70,10 @@ jobs:
 #          mv !(build) build/web/
 
       - name: Change directory to root
-        run: cd ..
-
+        run: |
+          cd ..
+          pwd
+           
       - name: List downloaded files
         run: ls -al       
 
