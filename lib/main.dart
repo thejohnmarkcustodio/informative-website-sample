@@ -97,7 +97,7 @@ class ContactPage extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/about');
             },
-            child: Text('About', style: TextStyle(color: Colors.white)),
+            child: Text('About', style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0))),
           ),
         ],
       ),
