@@ -73,7 +73,7 @@ jobs:
         run: cd ..
 
       - name: List downloaded files
-        run: ls -al build/web/        
+        run: ls -al       
 
 
       - name: Build and push Docker image
