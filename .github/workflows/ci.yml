@@ -87,17 +87,14 @@ jobs:
           docker build -t thejohnmarkcustodio/informative-website:latest -f Dockerfile .
           docker push thejohnmarkcustodio/informative-website:latest
 
-      - name: Clone Helm repository
-        env:
-          REPO_USERNAME: ${{ secrets.REPO_USERNAME }}
-          REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
+      - name: Update Helm Chart Repository
         run: |
-          git clone https://${{ secrets.REPO_USERNAME }}:${{ secrets.REPO_PASSWORD }}@github.com/thejohnmarkcustodio/informative-website-helm.git
+          git config --global user.email "thejohnmarkcustodio@gmail.com"
+          git config --global user.name "thejohnmarkcustodio"
+          git clone https://github.com/thejohnmarkcustodio/informative-website-helm.git
           cd informative-website-helm
           sed -i 's|repository:.*|repository: thejohnmarkcustodio/informative-website|' informative-website/values.yaml
           sed -i 's|tag:.*|tag: latest|' informative-website/values.yaml
-          git config --global user.email "${{ secrets.USER_EMAIL }}"
-          git config --global user.name "${{ secrets.USER_NAME }}"
           git add informative-website/values.yaml
           git commit -m "Update image repository and tag"
-          git push https://${{ secrets.REPO_USERNAME }}:${{ secrets.REPO_PASSWORD }}@github.com/thejohnmarkcustodio/informative-website-helm.git
+          git push
