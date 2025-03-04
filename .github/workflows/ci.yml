@@ -95,8 +95,8 @@ jobs:
           git config --global user.name "thejohnmarkcustodio"
           git clone https://$GH_TOKEN@github.com/thejohnmarkcustodio/informative-website-helm.git
           cd informative-website-helm
-          sed -i 's|repository:.*|repository: thejohnmarkcustodio/informative-website|' informative-website/values.yaml
+          sed -i 's|repository:.*|repository: thejohnmarkcustodio/informative-website-helm|' informative-website-helm/values.yaml
           sed -i 's|tag:.*|tag: latest|' informative-website/values.yaml
-          git add informative-website/values.yaml
+          git add informative-website-helm/values.yaml
           git commit -m "Update image repository and tag"
           git push https://$GH_TOKEN@github.com/thejohnmarkcustodio/informative-website-helm.git
