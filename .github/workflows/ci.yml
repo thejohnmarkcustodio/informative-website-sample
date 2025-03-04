@@ -61,13 +61,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: web-build
-          path: .
+          path: build/web
 
-      - name: Move files to build/web
-        run: |
-          mkdir -p build/web
-          shopt -s extglob
-          mv !(build) build/web/
+#      - name: Move files to build/web
+#        run: |
+#          mkdir -p build/web
+#          shopt -s extglob
+#          mv !(build) build/web/
 
       - name: Change directory to root
         run: cd ..
