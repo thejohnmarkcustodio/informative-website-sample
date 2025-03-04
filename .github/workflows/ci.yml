@@ -89,9 +89,10 @@ jobs:
 
       - name: Update Helm Chart Repository
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}      
+          REPO_USERNAME: ${{ secrets.REPO_USERNAME }}
+          REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
         run: |
-          git clone https://$REPO_TOKEN@github.com/thejohnmarkcustodio/informative-website-helm.git
+          git clone https://$REPO_USERNAME:$REPO_PASSWORD@github.com/thejohnmarkcustodio/informative-website-helm.git
           cd informative-website-helm
           sed -i 's|repository:.*|repository: thejohnmarkcustodio/informative-website|' informative-website/values.yaml
           sed -i 's|tag:.*|tag: latest|' informative-website/values.yaml
@@ -99,4 +100,4 @@ jobs:
           git config --global user.name "thejohnmarkcustodio"
           git add informative-website/values.yaml
           git commit -m "Update image repository and tag"
-          git push https://$REPO_TOKEN@github.com/thejohnmarkcustodio/informative-website-helm.git
+          git push https://$REPO_USERNAME:$REPO_PASSWORD@github.com/thejohnmarkcustodio/informative-website-helm.git
